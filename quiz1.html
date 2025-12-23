@@ -10,14 +10,15 @@
             let name= prompt ("당신의 이름은?");
             let age= prompt (`${name} 님의 나이는?`);
             let address= prompt (`${name} 님의 주소는?`);
-           ` <table border="1">
+           let msg= `
+           <table border="1">
             <tr>
                 <th>이름</th><th>나이</th><th>주소</th>
             </tr>
             <tr>
-                <td>${name}</td><td>${age}</td><td>${address}</td>
+                <td>${name}</td><td style="text-align:center">${age}</td><td>${address}</td>
             </tr>
-        </table>`
+        </table>`;
         div.innerHTML=msg;
            
         }
