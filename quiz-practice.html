@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+     let id, pwd, pwd_check, name, result
+     function init(){
+     id=document.getElementById("id")
+     pwd=document.getElementById("pwd")
+     pwd_check=document.getElementById("pwd_check")
+     name=document.getElementById("name")
+     result=document.getElementById("result")
+     }
+     function id_check(){
+        console.log(id.value.length)
+      let saveId="javascript"
+       if(id.value.length > 3){
+        
+        if(saveId==id.value){
+           result.innerHTML="존재하는 id 입니다"
+        }else{
+           result.innerHTML="가입 가능한 id 입니다"
+        }
+       }else{ result.innerHTML="길이가 짧습니다(4자 이상)"}
+     }
+     function pwdcheck(){
+        console.log("실행")
+        if(pwd.value==pwd_check.value){
+            result.innerHTML="일치합니다"
+        }else{
+            result.innerHTML="비밀번호 일치하지 않음"
+            pwd.focus();
+            pwd.value=""
+            pwd_check.value=""
+        }
+     }
+     
+    </script>
+</head>
+<body onload="init()">
+    <input type="text" id="id" oninput="id_check()" placeholder="input id"><br>
+    <input type="text" id="pwd" placeholder="input password"><br>
+    <input type="text" id="pwd_check" onchange="pwdcheck()" placeholder="password check"><br>
+    <input type="text" id="name" placeholder="input name"><br>
+    <div id="result"></div>
+    <button onclick="btn()">클릭</button>
+</body>
+</html>
