@@ -36,10 +36,33 @@
             pwd_check.value=""
         }
      }
-     
+     function btn(){
+     if(id.value==""){
+      result.innerHTML="id 필수 항목";
+      id.focus();
+     }else if(pwd.value==""){
+        result.innerHTML="pwd 필수 항목";
+        pwd.focus();
+     }else if(pwd_check.value==""){
+        result.innerHTML="pwd_check 필수 항목";
+        pwd_check.focus();
+     }else if(name.value==""){
+        result.innerHTML="name 필수 항목";
+        name.focus();
+     }
+     else{
+     result.innerHTML=`
+    <h3>입력 데이터</h3>
+    id:<b>${id.value}</b><br>
+    pwd:<b>${pwd.value}</b><br>
+    pwd_check:<b>${pwd_check.value}</b><br>
+    name:<b>${name.value}</b><br>`
+    }
+    } 
     </script>
 </head>
 <body onload="init()">
+
     <input type="text" id="id" oninput="id_check()" placeholder="input id"><br>
     <input type="text" id="pwd" placeholder="input password"><br>
     <input type="text" id="pwd_check" onchange="pwdcheck()" placeholder="password check"><br>
