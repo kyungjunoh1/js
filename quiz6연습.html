@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <style>
+    table {
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 5px 10px;
+      border: 1px solid black;
+    }
+
+    tbody tr {
+      cursor: pointer;
+    }
+
+    tbody tr:hover {
+      background-color: aqua;
+    }
+  </style>
+
+  <script>
+    let selectedTr = null; // 현재 선택된 tr 하나만 기억
+
+    function trFunc(tr) {
+
+      // 1️⃣ 같은 줄을 다시 클릭한 경우 → 선택 해제
+      if (selectedTr === tr) {
+        tr.style.backgroundColor = "";
+        selectedTr = null;
+        return;
+      }
+
+      // 2️⃣ 다른 줄이 이미 선택되어 있으면 → 이전 선택 해제
+      if (selectedTr !== null) {
+        selectedTr.style.backgroundColor = "";
+      }
+
+      // 3️⃣ 현재 줄 선택
+      tr.style.backgroundColor = "gold";
+      selectedTr = tr;
+    }
+  </script>
+</head>
+<body>
+    <table>
+    <thead>
+      <tr>
+        <th>아이디</th>
+        <th>이름</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr onclick="trFunc(this)">
+        <td>1 aaa</td><td>1 홍길동</td>
+      </tr>
+      <tr onclick="trFunc(this)">
+        <td>2 aaa</td><td>2 홍길동</td>
+      </tr>
+      <tr onclick="trFunc(this)">
+        <td>3 aaa</td><td>3 홍길동</td>
+      </tr>
+      <tr onclick="trFunc(this)">
+        <td>4 aaa</td><td>4 홍길동</td>
+      </tr>
+      <tr onclick="trFunc(this)">
+        <td>5 aaa</td><td>5 홍길동</td>
+      </tr>
+      <tr onclick="trFunc(this)">
+        <td>6 aaa</td><td>6 홍길동</td>
+      </tr>
+      <tr onclick="trFunc(this)">
+        <td>7 aaa</td><td>7 홍길동</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

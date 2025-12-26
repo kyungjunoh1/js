@@ -30,7 +30,7 @@
         width += 5;
         img.style.marginLeft=width+"px";
         
-        if(start==0){
+        if(start==0 && width>=100){
         txt.innerHTML="START"
         start=new Date().getTime();
         }
@@ -51,5 +51,15 @@
         <hr>
         <img id="pic" src="images/jol01.png">
     </div>
+    <script>
+        let div = document.getElementById("txt");
+        let num = 10;
+        let sum = 100;
+        //++num; //num:10+1=11
+        // 전치(++num) : 우선시 된다. 제일 먼저 연산
+        // 후치(num++) : 모든 연산이 끝난 후 자기 자신을 증가한다
+        sum= sum + ++num; 
+        div.innerHTML=sum + " : " + num;
+    </script>
 </body>
 </html>
