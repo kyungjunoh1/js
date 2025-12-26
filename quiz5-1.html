@@ -9,10 +9,43 @@
         #pic{width: 100px; height: 100px;}
     </style>
     <script>
+       function init(){
+        addEventListener("keydown", kDown);
+      }
+      let width=0;
+      let imageNum=1;
+      let start=0;
+      let end=0;
+      function kDown(event){
+        const img = document.getElementById("pic");
+        const txt = document.getElementById("txt");
+        //console.log("스페이스 바 확인 :",event)
+        switch(event.code){
+        case "Space" :
+        if(width <= 400){
+        imageNum++; //imageNum= imageNum+1
+        img.src = "images/jol0" + imageNum + ".png"
+        if(imageNum >= 3) imageNum=0;
+        
+        width += 5;
+        img.style.marginLeft=width+"px";
+        
+        if(start==0){
+        txt.innerHTML="START"
+        start=new Date().getTime();
+        }
+        
+        if(width >= 405){
+            end=new Date().getTime();
+            txt.innerHTML="종료 :" + (end-start)/1000 + "초"
+        }
+       }
+      }
 
+    }
     </script>
 </head>
-<body onload="">
+<body onload="init()">
     <div id="wrap">
         <div id="txt" style="margin-left: 100px;">READY</div>
         <hr>
