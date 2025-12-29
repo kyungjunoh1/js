@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
+        let selfId = 0;
         //function trFunc(tr){}
         const trFunc = (tr) => {
             for(let i=1; i<=7; i++){
@@ -12,11 +13,17 @@
             }
 
             console.log(tr)
-            tr.style.backgroundColor = "yellow"
+            if(selfId != tr.id){
+              tr.style.backgroundColor = "yellow"
+              selfId = tr.id; 
+            }else{
+              tr.style.backgroundColor = ""
+              selfId = 0;
+            }
         }
         //funtion init(){}
        const init=()=> {
-        const table=document.getElementById("table")
+        /*const table=document.getElementById("table")
         let msg = "";
         msg=`
           <table border="1">
@@ -36,13 +43,13 @@
         msg+="</table>";
         console.log("테이블 닫기 msg :", msg)
 
-        table.innerHTML=msg;
-        /*//alert("실행")
+        table.innerHTML=msg;*/
+        //alert("실행")
         const table=document.getElementById("table")
         let msg = "";
         for(let i=1; i<=7;i++){
             msg += `
-            <tr>
+            <tr onclick="trFunc(this)" id="${i}">
                 <td>${i}.aaa</td><td>${i}.홍길동</td>
             </tr>
             `;
@@ -55,7 +62,7 @@
             </tr>
             ${msg}
         </table>
-        `;*/
+        `;
        }
     </script>
 </head>
