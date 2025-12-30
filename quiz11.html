@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+  
+  let userInfo = [
+    { 'id' : 'aaa', 'name' : '홍길동', 'age' : 20 },
+    { 'id' : 'bbb','name' : '김개똥', 'age' : 30 },
+    { 'id' : 'ccc', 'name' : '고길동', 'age' : 40 }
+]
+  const allUser=()=>{
+    let msg="";
+    userInfo.forEach((user)=>{
+        msg+= `
+        <tr>
+        <td>${user['id']}</td><td>${user['name']}</td><td>${user['age']}</td>
+        </tr>
+        `;
+    })
+    const table = tableCreate(msg);
+    /*let table=`
+    <table border="1">
+       <tr>
+        <th>아이디</th><th>이름</th><th>나이</th>
+       </tr>
+       ${msg}
+    </table>
+    `;*/
+     document.getElementById("table").innerHTML=table
+  }
+   const getUser=()=>{
+    let msg=""
+    const uId=document.getElementById("u_id")
+    //console.log(uId.value)
+    //console.log(userInfo[0]['id']==uId.value)
+    //console.log(userInfo[1]['id']==uId.value)
+    //console.log(userInfo[2]['id']==uId.value)
+    /*1번째 방법
+    for(let i=0;i<userInfo.length;i++){
+        //console.log(userInfo[i]['id']==uId.value)
+        if(userInfo[i]['id']==uId.value){
+            //console.log(userInfo[i])
+            msg +=`
+            <tr>
+                <td>${userInfo[i]['id']}</td>
+                <td>${userInfo[i]['name']}</td>
+                <td>${userInfo[i]['age']}</td>
+            </tr>
+            `;
+        }
+    }*/
+    /*2번째 방법
+    userInfo.forEach((user)=>{
+        if(user['id']==uId.value){
+            msg +=`
+            <tr>
+                <td>${user['id']}</td>
+                <td>${user['name']}</td>
+                <td>${user['age']}</td>
+            </tr>
+            `;
+        }
+    })*/
+    /*
+    const result = userInfo.filter((user)=>{
+        if(user['id']==uId.value){
+            return user;
+        }
+    })*/
+   // 변수=(조건식) ? 참인경우 : 거짓인경우
+   let result = userInfo.filter((user)=>
+        (user['id']==uId.value) ? user : "")
+    //console.log(result)
+    //console.log(result[0])
+    //console.log(result[0]['id'])
+    if(result.length !=0){
+        result=result[0]
+        //console.log(result)
+        msg +=`
+            <tr>
+                <td>${result['id']}</td>
+                <td>${result['name']}</td>
+                <td>${result['age']}</td>
+            </tr>
+            `;
+    }else{
+        msg += `<tr><td colspan="3">사용자가 없음</td></tr>`
+    }
+
+    const table = tableCreate(msg);
+    
+    document.getElementById("table").innerHTML=table
+   }
+   function tableCreate(msg){
+      let table=`
+    <table border="1">
+       <tr>
+            <th>아이디</th><th>이름</th><th>나이</th>
+       </tr>
+       ${msg}
+    </table>
+    `;
+    return table;
+   }
+
+  /*
+  const getUser=()=>{
+      let user = userInfo[1]; // 2번째 데이터
+
+  let table = `
+    <table border="1">
+      <tr>
+        <th>아이디</th><th>이름</th><th>나이</th>
+      </tr>
+      <tr>
+        <td>${user.id}</td>
+        <td>${user.name}</td>
+        <td>${user.age}</td>
+      </tr>
+    </table>
+  `;
+  document.getElementById("table").innerHTML = table;
+};*/
+  
+  
+    </script>
+</head>
+<body>
+
+    <div id="table">목록을 보여 줍니다</div>
+	<hr>
+	<button type="button" onclick="allUser()">모든 회원 보기</button>
+	<hr>
+	<input type="text" id="u_id" placeholder="input id">
+	<br>
+	<button type="button" onclick="getUser()">특정 회원 조회</button>
+	<hr>
+	<input type="text" id="del_id" placeholder="input id">
+	<br>
+	<button type="button" onclick="userDelete()">특정 회원 삭제</button>
+</body>
+</html>
